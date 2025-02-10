@@ -1,0 +1,40 @@
+.grid-container {
+  display: grid;
+  gap: 10px;
+  padding: 10px;    
+}
+
+.grid-item {
+  padding: 10px;
+  text-align: center;
+}
+
+.grid-item img {
+  width: 100%;
+  height: 80%;
+}
+
+.grid-item p {
+    margin-top: 5px;
+}
+
+/* Mobile: 2 columns */
+@media (max-width: 767px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablet: 3 columns */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Desktop: 4 columns */
+@media (min-width: 1024px) {
+    .grid-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
