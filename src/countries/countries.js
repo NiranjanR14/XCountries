@@ -4,6 +4,7 @@ import './countries.css';
 const Countries = () => {
 
     const [countries, setCountries] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const fetchCountries = async () => {
@@ -22,12 +23,22 @@ const Countries = () => {
         fetchCountries();
     }, []);
 
+    const filteredCountries = searchQuery === '' ? countries : countries.filter(country =>
+        country.name.includes(searchQuery)
+    );
+
     return (
         <div>
             <h1>Countries</h1>
+            <input
+                type="text"
+                placeholder="Search for countries..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+            />
             <div className='grid-container'>
-                {countries.map((country) => (
-                    <div className='grid-item'>
+                {filteredCountries.map((country) => (
+                    <div className='grid-item countryCard' key={country.name}>
                         <img src={country.flag} alt={country.name} />
                         <p>{country.name}</p>
                     </div>
