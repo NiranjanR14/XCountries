@@ -24,7 +24,7 @@ const Countries = () => {
     }, []);
 
     const filteredCountries = searchQuery === '' ? countries : countries.filter(country =>
-        country.common.includes(searchQuery)
+        country.common.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
     return (
