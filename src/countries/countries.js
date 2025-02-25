@@ -9,7 +9,7 @@ const Countries = () => {
     useEffect(() => {
         const fetchCountries = async () => {
             try {
-                const response = await fetch('https://xcountries-backend.azurewebsites.net/all');
+                const response = await fetch('https://countries-search-data-prod-812920491762.asia-south1.run.app/countries');
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
@@ -24,7 +24,7 @@ const Countries = () => {
     }, []);
 
     const filteredCountries = searchQuery === '' ? countries : countries.filter(country =>
-        country.name.includes(searchQuery)
+        country.common.includes(searchQuery)
     );
 
     return (
@@ -38,9 +38,9 @@ const Countries = () => {
             />
             <div className='grid-container'>
                 {filteredCountries.map((country) => (
-                    <div className='grid-item countryCard' key={country.name}>
-                        <img src={country.flag} alt={country.name} />
-                        <p>{country.name}</p>
+                    <div className='grid-item countryCard' key={country.common}>
+                        <img src={country.png} alt={country.common} />
+                        <p>{country.common}</p>
                     </div>
                 ))}
             </div>
